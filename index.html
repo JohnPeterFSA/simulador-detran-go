@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header com informações do usuário -->
+    <div id="user-header" class="user-header" style="display: none;">
+        <div class="user-info">
+            <i class="fas fa-user-circle"></i>
+            <span id="username-display"></span>
+            <span id="user-type" class="user-type"></span>
+        </div>
+        <button id="logout-btn" class="logout-btn" onclick="AuthSystem.logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            Sair
+        </button>
+    </div>
+
     <div class="container">
         <!-- Tela Inicial -->
         <div id="home-screen" class="screen active">
@@ -23,13 +36,13 @@
             <div class="info-cards">
                 <div class="info-card">
                     <i class="fas fa-question-circle"></i>
-                    <h3>30 Questões</h3>
+                    <h3 id="questions-count">30 Questões</h3>
                     <p>Simulado completo com questões atualizadas</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-target"></i>
-                    <h3>21 para Passar</h3>
-                    <p>Você precisa acertar pelo menos 21 questões</p>
+                    <h3 id="pass-requirement">21 para Passar</h3>
+                    <p id="pass-description">Você precisa acertar pelo menos 70% das questões</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-clock"></i>
@@ -138,6 +151,8 @@
     </div>
 
     <script src="questions.js"></script>
+    <script src="login.js"></script>
     <script src="script.js"></script>
+    <script src="auth-integration.js"></script>
 </body>
 </html>

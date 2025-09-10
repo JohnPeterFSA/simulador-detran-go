@@ -64,10 +64,13 @@ function showScreen(screenName) {
 }
 
 function startQuiz() {
-    // Selecionar 30 perguntas aleatórias
-    currentQuestions = getRandomQuestions(30);
+    // Verificar se é modo teste e definir número de questões
+    const questionCount = window.TEST_MODE ? (window.MAX_TEST_QUESTIONS || 10) : 30;
+    
+    // Selecionar perguntas aleatórias
+    currentQuestions = getRandomQuestions(questionCount);
     currentQuestionIndex = 0;
-    userAnswers = new Array(30).fill(null);
+    userAnswers = new Array(questionCount).fill(null);
     score = 0;
     quizStartTime = new Date();
     
@@ -215,7 +218,12 @@ function showResults() {
     const totalQuestions = currentQuestions.length;
     const wrongAnswers = totalQuestions - score;
     const percentage = Math.round((score / totalQuestions) * 100);
-    const passed = score >= 21; // Precisa de 21 acertos para passar
+    
+    // Calcular critério de aprovação dinamicamente
+    // Para 30 questões: 21 acertos (70%)
+    // Para 10 questões: 7 acertos (70%)
+    const requiredScore = Math.ceil(totalQuestions * 0.7);
+    const passed = score >= requiredScore;
     
     // Atualizar elementos de resultado
     elements.correctAnswers.textContent = score;
@@ -233,7 +241,7 @@ function showResults() {
             <i class="fas fa-times-circle"></i>
             <h2>Você foi REPROVADA</h2>
             <p>Você acertou ${score} de ${totalQuestions} questões (${percentage}%)</p>
-            <p>É necessário acertar pelo menos 21 questões para ser aprovada.</p>
+            <p>É necessário acertar pelo menos ${requiredScore} questões para ser aprovada.</p>
         `;
     
     elements.resultStatus.innerHTML = statusHTML;

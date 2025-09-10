@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Simulador DETRAN-GO</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo">
+                    <i class="fas fa-car"></i>
+                    <h1>Simulador DETRAN-GO</h1>
+                </div>
+                <p class="subtitle">Faça login para acessar o simulador</p>
+            </div>
+
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="username">
+                        <i class="fas fa-user"></i>
+                        Usuário
+                    </label>
+                    <input type="text" id="username" name="username" required placeholder="Digite seu usuário">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i>
+                        Senha
+                    </label>
+                    <input type="password" id="password" name="password" required placeholder="Digite sua senha">
+                </div>
+
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Entrar
+                </button>
+            </form>
+
+            <div class="login-options">
+                <div class="option-card">
+                    <i class="fas fa-crown"></i>
+                    <h3>Simulado Permanente</h3>
+                    <p>Acesso ilimitado a todos os simulados</p>
+                    <button class="btn-premium" onclick="showPremiumInfo()">
+                        <i class="fas fa-star"></i>
+                        Adquirir Simulado Permanente
+                    </button>
+                </div>
+
+                <div class="option-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Apoie o Projeto</h3>
+                    <p>Contribua para manter o simulador gratuito</p>
+                    <button class="btn-donate" onclick="showDonationInfo()">
+                        <i class="fas fa-donate"></i>
+                        Doações e Contribuição
+                    </button>
+                </div>
+
+                <div class="option-card test-option">
+                    <i class="fas fa-play-circle"></i>
+                    <h3>Teste Gratuito</h3>
+                    <p>Faça um teste limitado (1 vez por IP)</p>
+                    <button id="test-btn" class="btn-test" onclick="startFreeTest()">
+                        <i class="fas fa-play"></i>
+                        Faça um Teste
+                    </button>
+                    <div id="test-status" class="test-status" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Você já utilizou seu teste gratuito</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-footer">
+                <p>&copy; 2024 Simulador DETRAN-GO - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Premium -->
+    <div id="premium-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('premium-modal')">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-crown"></i>
+                <h2>Simulado Permanente</h2>
+            </div>
+            <div class="modal-body">
+                <div class="premium-features">
+                    <div class="feature">
+                        <i class="fas fa-infinity"></i>
+                        <span>Simulados ilimitados</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Relatórios detalhados</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Salvar progresso</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Acesso em qualquer dispositivo</span>
+                    </div>
+                </div>
+                <div class="premium-price">
+                    <h3>R$ 19,90</h3>
+                    <p>Pagamento único - Acesso vitalício</p>
+                </div>
+                <button class="btn-premium-buy">
+                    <i class="fas fa-credit-card"></i>
+                    Adquirir Agora
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Doação -->
+    <div id="donation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('donation-modal')">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-heart"></i>
+                <h2>Apoie o Projeto</h2>
+            </div>
+            <div class="modal-body">
+                <p>Sua contribuição ajuda a manter o simulador gratuito e sempre atualizado!</p>
+                <div class="donation-options">
+                    <button class="donation-btn" data-value="5">
+                        <i class="fas fa-coffee"></i>
+                        R$ 5,00
+                        <span>Um café</span>
+                    </button>
+                    <button class="donation-btn" data-value="10">
+                        <i class="fas fa-hamburger"></i>
+                        R$ 10,00
+                        <span>Um lanche</span>
+                    </button>
+                    <button class="donation-btn" data-value="25">
+                        <i class="fas fa-pizza-slice"></i>
+                        R$ 25,00
+                        <span>Uma pizza</span>
+                    </button>
+                    <button class="donation-btn custom" onclick="showCustomDonation()">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        Outro valor
+                    </button>
+                </div>
+                <div class="payment-methods">
+                    <h4>Formas de pagamento:</h4>
+                    <div class="payment-icons">
+                        <i class="fab fa-pix"></i>
+                        <i class="fas fa-credit-card"></i>
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
