@@ -291,13 +291,13 @@ const questionsBank = [
         question: "A placa R-6a significa:",
         options: [
             "Proibido virar à direita",
-            "Proibido virar à esquerda",
+            "Proibido estacionar",
             "Siga em frente",
             "Proibido retornar"
         ],
         correct: 1,
         category: "sinalizacao",
-        explanation: "A placa R-6a proíbe conversão à esquerda no local onde está instalada."
+        explanation: "A placa R-6a significa 'Proibido estacionar' no local onde está instalada."
     },
     {
         id: 24,
@@ -561,7 +561,7 @@ const questionsBank = [
     },
     {
         id: 44,
-        question: "A placa R-19 (proibido trânsito de pedestres) é:",
+        question: "A placa R-19 (velocidade máxima permitida) é:",
         options: [
             "Circular com fundo branco",
             "Circular com fundo vermelho",
@@ -570,7 +570,7 @@ const questionsBank = [
         ],
         correct: 0,
         category: "sinalizacao",
-        explanation: "Placas de regulamentação são circulares com fundo branco e orla vermelha."
+        explanation: "A placa R-19 (velocidade máxima permitida) é circular com fundo branco e orla vermelha."
     },
     {
         id: 45,
@@ -665,16 +665,16 @@ const questionsBank = [
     },
     {
         id: 52,
-        question: "O que significa a placa R-3 (proibido virar à direita)?",
+        question: "O que significa a placa R-3 (sentido proibido)?",
         options: [
             "Conversão obrigatória à direita",
-            "Proibido virar à direita",
+            "Sentido proibido",
             "Siga em frente ou à direita",
             "Preferência à direita"
         ],
         correct: 1,
         category: "sinalizacao",
-        explanation: "A placa R-3 proíbe a conversão à direita no local onde está instalada."
+        explanation: "A placa R-3 indica 'Sentido proibido', proibindo a entrada de veículos na via."
     },
     {
         id: 53,
@@ -776,9 +776,9 @@ const questionsBank = [
             "Siga em frente",
             "Conversão obrigatória"
         ],
-        correct: 1,
+        correct: 0,
         category: "sinalizacao",
-        explanation: "A placa R-4a proíbe o retorno (conversão de 180 graus) no local."
+        explanation: "A placa R-4a significa 'Proibido virar à esquerda' no local onde está instalada."
     },
     {
         id: 61,
@@ -938,7 +938,7 @@ const questionsBank = [
     },
     {
         id: 73,
-        question: "A placa R-19 (proibido trânsito de pedestres) é:",
+        question: "A placa R-19 (velocidade máxima permitida) é:",
         options: [
             "Circular vermelha e branca",
             "Triangular amarela",
@@ -947,7 +947,7 @@ const questionsBank = [
         ],
         correct: 0,
         category: "sinalizacao",
-        explanation: "Placas de proibição são circulares com fundo branco e borda vermelha."
+        explanation: "A placa R-19 (velocidade máxima permitida) é circular com fundo branco e borda vermelha."
     },
     {
         id: 74,
