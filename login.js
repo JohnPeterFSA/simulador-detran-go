@@ -106,7 +106,11 @@ function isUserLoggedIn() {
 }
 
 function redirectToSimulator() {
-    window.location.href = 'index.html';
+    // Adicionar um pequeno delay para evitar piscar
+    document.body.style.opacity = '0.5';
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 100);
 }
 
 // Sistema de teste gratuito por IP

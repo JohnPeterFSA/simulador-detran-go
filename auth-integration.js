@@ -6,15 +6,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function checkAuthenticationOnSimulator() {
-    // Verificar se o usuário está logado
-    if (!window.AuthSystem || !window.AuthSystem.isUserLoggedIn()) {
-        // Redirecionar para login se não estiver autenticado
-        window.location.href = 'login.html';
-        return;
-    }
-    
-    // Usuário está logado, configurar interface
-    setupAuthenticatedInterface();
+    // Aguardar um pouco para garantir que o AuthSystem esteja carregado
+    setTimeout(() => {
+        // Verificar se o usuário está logado
+        if (!window.AuthSystem || !window.AuthSystem.isUserLoggedIn()) {
+            // Redirecionar para login se não estiver autenticado
+            document.body.style.opacity = '0';
+            window.location.href = 'login.html';
+            return;
+        }
+        
+        // Usuário está logado, configurar interface
+        setupAuthenticatedInterface();
+    }, 50);
 }
 
 function setupAuthenticatedInterface() {
