@@ -210,7 +210,7 @@ function startFreeTest() {
         loginTime: new Date().toISOString(),
         isPremium: false,
         isTest: true,
-        maxQuestions: 10 // Limitar a 10 questões no teste
+        maxQuestions: 30 // Limitar a 30 questões no teste
     };
     
     localStorage.setItem(STORAGE_KEYS.USER_SESSION, JSON.stringify(testSession));

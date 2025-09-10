@@ -68,9 +68,9 @@ function setupTestLimitations() {
     const userSession = window.AuthSystem.getUserSession();
     
     if (userSession && userSession.isTest) {
-        // Modificar o simulador para usar apenas 10 questões
+        // Modificar o simulador para usar 30 questões no teste gratuito
         window.TEST_MODE = true;
-        window.MAX_TEST_QUESTIONS = userSession.maxQuestions || 10;
+        window.MAX_TEST_QUESTIONS = userSession.maxQuestions || 30;
         
         // Adicionar aviso de teste limitado
         addTestWarning();
@@ -101,7 +101,7 @@ function addTestWarning() {
                 <i class="fas fa-exclamation-triangle"></i>
                 <div class="warning-text">
                     <h3>Modo Teste Gratuito</h3>
-                    <p>Você está no modo teste limitado com apenas <strong>${window.MAX_TEST_QUESTIONS || 10} questões</strong>.</p>
+                    <p>Você está no modo teste gratuito com <strong>${window.MAX_TEST_QUESTIONS || 30} questões</strong>.</p>
                     <p>Para acesso completo, faça login ou adquira o simulado permanente.</p>
                 </div>
             </div>
@@ -250,6 +250,16 @@ function interceptQuizFinish() {
         if (originalShowResults) {
             window.showResults = function() {
                 originalShowResults();
+                
+                // Marcar teste como usado permanentemente
+                const testData = {
+                    ip: window.userIP || 'unknown',
+                    timestamp: new Date().toISOString(),
+                    used: true,
+                    completed: true
+                };
+                localStorage.setItem('ip_test_used', JSON.stringify(testData));
+                
                 addTestCompletionMessage();
             };
         }
@@ -409,8 +419,8 @@ function updateHomeScreenInfo() {
     const passDescriptionEl = document.getElementById('pass-description');
     
     if (userSession && userSession.isTest) {
-        // Modo teste - 10 questões
-        const testQuestions = userSession.maxQuestions || 10;
+        // Modo teste - 30 questões
+        const testQuestions = userSession.maxQuestions || 30;
         const requiredScore = Math.ceil(testQuestions * 0.7);
         
         if (questionsCountEl) {
