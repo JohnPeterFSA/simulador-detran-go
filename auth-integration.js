@@ -3,6 +3,7 @@
 // Verificar autenticação ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
     checkAuthenticationOnSimulator();
+    interceptQuizFinish();
 });
 
 function checkAuthenticationOnSimulator() {
@@ -10,9 +11,12 @@ function checkAuthenticationOnSimulator() {
     setTimeout(() => {
         // Verificar se o usuário está logado
         if (!window.AuthSystem || !window.AuthSystem.isUserLoggedIn()) {
-            // Redirecionar para login se não estiver autenticado
-            document.body.style.opacity = '0';
-            window.location.href = 'login.html';
+            // Evitar loop de redirecionamento
+            if (!window.location.href.includes('login.html')) {
+                // Redirecionar para login se não estiver autenticado
+                document.body.style.opacity = '0';
+                window.location.href = 'login.html';
+            }
             return;
         }
         
@@ -396,12 +400,7 @@ function addUpgradePromptStyles() {
     document.head.appendChild(style);
 }
 
-// Executar interceptação quando o DOM estiver pronto
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', interceptQuizFinish);
-} else {
-    interceptQuizFinish();
-}
+// Interceptação do quiz já configurada no DOMContentLoaded principal
 
 function updateHomeScreenInfo() {
     const userSession = window.AuthSystem.getUserSession();

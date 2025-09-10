@@ -15,12 +15,24 @@ const STORAGE_KEYS = {
 // Inicialização da página
 document.addEventListener('DOMContentLoaded', function() {
     initializeLogin();
+    
+    // Event listeners para botões de doação
+    const donationBtns = document.querySelectorAll('.donation-btn[data-value]');
+    donationBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const value = parseFloat(this.dataset.value);
+            processDonation(value);
+        });
+    });
 });
 
 function initializeLogin() {
     // Verificar se já está logado
     if (isUserLoggedIn()) {
-        redirectToSimulator();
+        // Evitar loop de redirecionamento
+        if (!window.location.href.includes('index.html')) {
+            redirectToSimulator();
+        }
         return;
     }
 
@@ -239,16 +251,7 @@ function processDonation(value) {
     console.log('Processando doação:', value);
 }
 
-// Event listeners para botões de doação
-document.addEventListener('DOMContentLoaded', function() {
-    const donationBtns = document.querySelectorAll('.donation-btn[data-value]');
-    donationBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const value = parseFloat(this.dataset.value);
-            processDonation(value);
-        });
-    });
-});
+// Event listeners para botões de doação já configurados no DOMContentLoaded principal
 
 // Funções de utilidade
 function showSuccessMessage(message) {
