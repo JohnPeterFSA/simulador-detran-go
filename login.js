@@ -236,9 +236,58 @@ function closeModal(modalId) {
 }
 
 function showCustomDonation() {
-    const customValue = prompt('Digite o valor da doação (R$):');
+    // Fechar modal de doação e abrir modal de valor personalizado
+    closeModal('donation-modal');
+    document.getElementById('custom-donation-modal').style.display = 'block';
+}
+
+function generatePixQR(value) {
+    // Gerar QR Code PIX para o valor especificado
+    const pixKey = 'seuemail@exemplo.com'; // Substitua pela sua chave PIX
+    const pixData = `00020126580014BR.GOV.BCB.PIX0136${pixKey}520400005303986540${value.toFixed(2)}5802BR5925Simulador DETRAN GO6009SAO PAULO62070503***6304`;
+    
+    // Criar QR Code usando uma biblioteca externa ou API
+    const qrCodeContainer = document.getElementById('qr-code-container');
+    qrCodeContainer.innerHTML = `
+        <div class="qr-code-display">
+            <div class="qr-placeholder">
+                <i class="fab fa-pix"></i>
+                <p>QR Code PIX</p>
+                <p class="pix-value">R$ ${value.toFixed(2)}</p>
+                <div class="pix-instructions">
+                    <p>1. Abra o app do seu banco</p>
+                    <p>2. Escaneie este QR Code</p>
+                    <p>3. Confirme o pagamento</p>
+                </div>
+            </div>
+            <div class="pix-copy-paste">
+                <p>Ou copie e cole:</p>
+                <input type="text" id="pix-code" value="${pixData}" readonly>
+                <button onclick="copyPixCode()" class="btn-copy-pix">
+                    <i class="fas fa-copy"></i>
+                    Copiar código PIX
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function copyPixCode() {
+    const pixCodeInput = document.getElementById('pix-code');
+    pixCodeInput.select();
+    pixCodeInput.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    showSuccessMessage('Código PIX copiado!');
+}
+
+function processCustomDonation() {
+    const customValue = document.getElementById('custom-donation-value').value;
     if (customValue && !isNaN(customValue) && parseFloat(customValue) > 0) {
-        processDonation(parseFloat(customValue));
+        generatePixQR(parseFloat(customValue));
+        document.getElementById('donation-form').style.display = 'none';
+        document.getElementById('qr-code-container').style.display = 'block';
+    } else {
+        showErrorMessage('Por favor, digite um valor válido.');
     }
 }
 

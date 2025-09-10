@@ -485,3 +485,156 @@ body {
         font-size: 2rem;
     }
 }
+
+/* Estilos para doação personalizada */
+.custom-value-input {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.custom-value-input label {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 1rem;
+}
+
+.custom-value-input input {
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+}
+
+.custom-value-input input:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+}
+
+.btn-generate-pix {
+    background: linear-gradient(135deg, #32d74b 0%, #00c851 100%);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-generate-pix:hover {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(50, 215, 75, 0.3);
+}
+
+/* Estilos para QR Code PIX */
+.qr-code-display {
+    text-align: center;
+    padding: 20px;
+}
+
+.qr-placeholder {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 15px;
+    padding: 40px 20px;
+    margin-bottom: 20px;
+}
+
+.qr-placeholder i {
+    font-size: 4rem;
+    color: #32d74b;
+    margin-bottom: 15px;
+}
+
+.qr-placeholder p {
+    margin: 10px 0;
+    color: #495057;
+}
+
+.pix-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #32d74b !important;
+    margin: 15px 0 !important;
+}
+
+.pix-instructions {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.pix-instructions p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.pix-copy-paste {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.pix-copy-paste p {
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    color: #495057;
+}
+
+.pix-copy-paste input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    background: white;
+    margin-bottom: 10px;
+}
+
+.btn-copy-pix {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+}
+
+.btn-copy-pix:hover {
+    background: #0056b3;
+}
+
+@media (max-width: 480px) {
+    .qr-placeholder {
+        padding: 30px 15px;
+    }
+    
+    .qr-placeholder i {
+        font-size: 3rem;
+    }
+    
+    .pix-value {
+        font-size: 1.3rem;
+    }
+}
