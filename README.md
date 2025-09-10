@@ -1,5 +1,11 @@
 # 🚗 Simulador Prova DETRAN-GO
 
+## 🌐 **Acesso Online**
+
+**🔗 URL:** https://johnpeterfsa.github.io/simulador-detran-go
+
+*Simulador disponível 24/7 na internet - Acesse de qualquer dispositivo!*
+
 Simulador completo da prova teórica do DETRAN de Goiás com 200 questões atualizadas e interface moderna.
 
 ## ✨ Características
@@ -11,11 +17,12 @@ Simulador completo da prova teórica do DETRAN de Goiás com 200 questões atual
 - 📊 **Revisão detalhada** com explicações
 - ⏱️ **Sem limite de tempo** para estudo tranquilo
 - 💾 **Salvamento automático** do progresso
+- 🌍 **Hospedado no GitHub Pages** - Acesso gratuito
 
 ## 🚀 Como Usar
 
 ### Online (Recomendado)
-Acesse: [https://seuusuario.github.io/simulador-detran-go](https://seuusuario.github.io/simulador-detran-go)
+Acesse: **https://johnpeterfsa.github.io/simulador-detran-go**
 
 ### Local
 1. Clone ou baixe este repositório
