@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Dtran</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tela Inicial -->
+        <div id="home-screen" class="screen active">
+            <div class="header">
+                <div class="logo">
+                    <i class="fas fa-car"></i>
+                    <h1>Simulado Dtran</h1>
+                </div>
+                <p class="subtitle">Prepare-se para a Prova Digital</p>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>30 Questões</h3>
+                    <p>Simulado completo com questões atualizadas</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-target"></i>
+                    <h3>21 para Passar</h3>
+                    <p>Você precisa acertar pelo menos 21 questões</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Sem Limite de Tempo</h3>
+                    <p>Faça com calma e atenção</p>
+                </div>
+            </div>
+            
+            <button id="start-btn" class="btn-primary">
+                <i class="fas fa-play"></i>
+                Iniciar Simulado
+            </button>
+        </div>
+
+        <!-- Tela do Quiz -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-info">
+                    <span id="question-counter">Questão 1 de 30</span>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="score-info">
+                    <span id="score-display">Acertos: 0</span>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div id="question-text" class="question-text"></div>
+                <div id="question-image" class="question-image"></div>
+                
+                <div id="options-container" class="options-container">
+                    <!-- Opções serão inseridas dinamicamente -->
+                </div>
+            </div>
+
+            <div class="quiz-controls">
+                <button id="prev-btn" class="btn-secondary" disabled>
+                    <i class="fas fa-arrow-left"></i>
+                    Anterior
+                </button>
+                <button id="next-btn" class="btn-primary" disabled>
+                    Próxima
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button id="finish-btn" class="btn-success" style="display: none;">
+                    <i class="fas fa-check"></i>
+                    Finalizar
+                </button>
+            </div>
+        </div>
+
+        <!-- Tela de Resultados -->
+        <div id="results-screen" class="screen">
+            <div class="results-container">
+                <div id="result-status" class="result-status">
+                    <!-- Status será inserido dinamicamente -->
+                </div>
+                
+                <div class="result-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3 id="correct-answers">0</h3>
+                        <p>Acertos</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-times-circle"></i>
+                        <h3 id="wrong-answers">0</h3>
+                        <p>Erros</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-percentage"></i>
+                        <h3 id="percentage">0%</h3>
+                        <p>Aproveitamento</p>
+                    </div>
+                </div>
+
+                <div class="result-actions">
+                    <button id="review-btn" class="btn-secondary">
+                        <i class="fas fa-eye"></i>
+                        Revisar Respostas
+                    </button>
+                    <button id="restart-btn" class="btn-primary">
+                        <i class="fas fa-redo"></i>
+                        Novo Simulado
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de Revisão -->
+        <div id="review-screen" class="screen">
+            <div class="review-header">
+                <h2><i class="fas fa-eye"></i> Revisão das Respostas</h2>
+                <button id="back-to-results" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Voltar aos Resultados
+                </button>
+            </div>
+            
+            <div id="review-container" class="review-container">
+                <!-- Revisão será inserida dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
